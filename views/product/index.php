@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app/product', 'Products');
+$this->title = Yii::t('core/product', 'Products');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app/product', 'Create Product'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('core/product', 'Create Product'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => Html::activeDropDownList(
                     $searchModel,
                     'fakeInStock',
-                    ['' => '-', 0 => Yii::t('app', 'No'), 1 => Yii::t('app', 'Yes')],
+                    ['' => '-', 0 => Yii::t('core', 'No'), 1 => Yii::t('core', 'Yes')],
                     ['class' => 'form-control']
                 ),
             ],
@@ -60,12 +60,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => Html::activeDropDownList(
                     $searchModel,
                     'isDisabled',
-                    ['' => '-', 0 => Yii::t('app', 'No'), 1 => Yii::t('app', 'Yes')],
+                    ['' => '-', 0 => Yii::t('core', 'No'), 1 => Yii::t('core', 'Yes')],
                     ['class' => 'form-control']
                 ),
             ],
             [
-                'label' => Yii::t('app/productRests', 'Product Rests'),
+                'label' => Yii::t('core/productRests', 'Product Rests'),
                 'value' => function ($data) {
                     $amount = $data->rests->amount;
                     return ($amount === null) ? 0 : $amount ;

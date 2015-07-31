@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
 
-$this->title = Yii::t('app/product', 'Create Product');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app/product', 'Products'), 'url' => ['index']];
+$this->title = Yii::t('core/product', 'Create Product');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('core/product', 'Products'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-create">
