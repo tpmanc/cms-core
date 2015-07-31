@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $this->title = Yii::t('core/productRests', 'Update Rests') . ': '. $model->product->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('core/productRests', 'Product Rests'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('core', 'Update');
 ?>
 <div class="product-rests-update">
 

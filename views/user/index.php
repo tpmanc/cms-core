@@ -8,7 +8,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app/user', 'Users');
+$this->title = Yii::t('core/user', 'Users');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app/user', 'Create User'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('core/user', 'Create User'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -33,14 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'username',
-                'label' => Yii::t('app/user', 'Username'),
+                'label' => Yii::t('core/user', 'Username'),
             ],
             // 'auth_key',
             // 'password_hash',
             // 'password_reset_token',
             [
                 'attribute' => 'role',
-                'label' => Yii::t('app/user', 'Role'),
+                'label' => Yii::t('core/user', 'Role'),
                 'filter' => Html::activeDropDownList(
                     $searchModel,
                     'role',

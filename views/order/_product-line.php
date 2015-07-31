@@ -11,7 +11,7 @@ use common\models\Product;
 
 <div class="product-line">
     <div class="form-group field-order-name col-md-8 col-lg-8 required">
-        <label class="control-label"><?= Yii::t('app/order', 'Products') ?></label>
+        <label class="control-label"><?= Yii::t('core/order', 'Products') ?></label>
         <?= Html::dropDownList(
             'products[]',
             null,
@@ -23,7 +23,7 @@ use common\models\Product;
         <div class="help-block"></div>
     </div>
     <div class="form-group field-order-name col-md-1 col-lg-1 required">
-        <label class="control-label"><?= Yii::t('app/order', 'Amount') ?></label>
+        <label class="control-label"><?= Yii::t('core/order', 'Amount') ?></label>
         <?= Html::input(
             'text',
             'amounts[]',
@@ -35,6 +35,6 @@ use common\models\Product;
         <div class="help-block"></div>
     </div>
     <div class="form-group field-order-name col-md-1 col-lg-1 required">
-        <button type="button" class="btn btn-danger remove-product-line"><?= Yii::t('app/order', 'Remove Product') ?></button>
+        <button type="button" class="btn btn-danger remove-product-line"><?= Yii::t('core/order', 'Remove Product') ?></button>
     </div>
 </div>

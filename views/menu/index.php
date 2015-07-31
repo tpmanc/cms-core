@@ -5,7 +5,7 @@
 /* @var $menu common\models\Menu */
 /* @var $categories common\models\Category */
 
-$this->title = Yii::t('app/menu', 'Menu Builder');
+$this->title = Yii::t('core/menu', 'Menu Builder');
 $this->params['breadcrumbs'][] = $this->title;
 
 //$level = 0;
@@ -41,10 +41,10 @@ $this->params['breadcrumbs'][] = $this->title;
 //echo '</ul>';die();
 // TODO: изменение параметров элемента и изменение сортировки в пределах одного depth
 ?>
-<h1><?= Yii::t('app/menu', 'Menu Builder') ?></h1>
+<h1><?= Yii::t('core/menu', 'Menu Builder') ?></h1>
 
 <p>
-    <button type="button" class="btn btn-success" id="addElement"><?= Yii::t('app/menu', 'Add Element') ?></button>
+    <button type="button" class="btn btn-success" id="addElement"><?= Yii::t('core/menu', 'Add Element') ?></button>
 </p>
 
 <p>
@@ -147,7 +147,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="form-group">
             <select class="form-control" id="allMenuNodes">
-                <option value="0"><?= Yii::t('app/menu','Root Element') ?></option>
+                <option value="0"><?= Yii::t('core/menu','Root Element') ?></option>
             </select>
 
             <div class="radio">
@@ -164,12 +164,12 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
             <div class="input-group" style="display: none;">
-                <span class="input-group-addon"><?= Yii::t('app/menu', 'Link') ?></span>
+                <span class="input-group-addon"><?= Yii::t('core/menu', 'Link') ?></span>
                 <input type="text" class="form-control" id="elementLink">
             </div>
 
             <select class="form-control" id="allCategories">
-                <option value="0" disabled selected><?= Yii::t('app/menu', 'Select category') ?></option>
+                <option value="0" disabled selected><?= Yii::t('core/menu', 'Select category') ?></option>
                 <?php foreach ($categories as $c) { ?>
                     <option data-title="<?= $c->title ?>" value="<?= $c->id ?>"><?= $c->title ?></option>
                 <?php } ?>
@@ -178,7 +178,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <br />
 
             <div class="input-group">
-                <span class="input-group-addon"><?= Yii::t('app/menu', 'Item Title') ?></span>
+                <span class="input-group-addon"><?= Yii::t('core/menu', 'Item Title') ?></span>
                 <input type="text" class="form-control" id="elementTitle">
             </div>
 
@@ -192,7 +192,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <br />
 
             <input type="hidden" id="elementId" value="0" />
-            <button type="button" class="btn btn-success" id="saveElement"><?= Yii::t('app', 'Save') ?></button>
+            <button type="button" class="btn btn-success" id="saveElement"><?= Yii::t('core', 'Save') ?></button>
         </div>
     </div>
 </div>

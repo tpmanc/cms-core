@@ -40,8 +40,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'totalPrice') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app/order', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app/order', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('core/order', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::t('core/order', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

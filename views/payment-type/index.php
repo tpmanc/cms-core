@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\PaymentTypeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app/paymentType', 'Payment Types');
+$this->title = Yii::t('core/paymentType', 'Payment Types');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="payment-type-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app/paymentType', 'Create Payment Type'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('core/paymentType', 'Create Payment Type'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => Html::activeDropDownList(
                     $searchModel,
                     'isDisabled',
-                    ['' => '-', 0 => Yii::t('app', 'No'), 1 => Yii::t('app', 'Yes')],
+                    ['' => '-', 0 => Yii::t('core', 'No'), 1 => Yii::t('core', 'Yes')],
                     ['class' => 'form-control']
                 ),
             ],

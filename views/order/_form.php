@@ -23,7 +23,7 @@ use common\models\Product;
         ]) ?>
     </div>
     <div class="clearfix"></div>
-    <button type="button" class="btn btn-success" id="addProduct"><?= Yii::t('app/order', 'Add Product') ?></button>
+    <button type="button" class="btn btn-success" id="addProduct"><?= Yii::t('core/order', 'Add Product') ?></button>
 
     <br />
     <br />
@@ -47,7 +47,7 @@ use common\models\Product;
     <?= $form->field($model, 'discount')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('core', 'Create') : Yii::t('core', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

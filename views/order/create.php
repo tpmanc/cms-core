@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Order */
 
-$this->title = Yii::t('app/order', 'Create Order');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app/order', 'Orders'), 'url' => ['index']];
+$this->title = Yii::t('core/order', 'Create Order');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('core/order', 'Orders'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-create">
