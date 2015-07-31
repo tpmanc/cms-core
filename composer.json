@@ -17,7 +17,6 @@
         "psr-4": {"tpmanc\\cmscore\\": ""}
     },
     "require": {
-        "php": ">=5.4.0",
-        "yiisoft/yii2-imagine": "*"
+        "php": ">=5.4.0"
     }
 }
