@@ -1,0 +1,113 @@
+#menuBuilder {
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+
+    .panel-heading {
+        .badge {
+            float: right;
+        }
+    }
+
+    ul {
+        color: #000;
+
+        li {
+            position: relative;
+            display: block;
+            width: 100%;
+            line-height: 36px;
+            margin-bottom: -1px;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+
+            .material-icons {
+                cursor: pointer;
+                font-size: 1.5rem;
+
+                &.settings {
+                    float: right;
+                    top: 7px;
+                    position: relative;
+                    margin: 0 5px;
+                }
+                &.expand {
+                    float: left;
+                    padding: 7px 0 7px 0;
+                    display: inline-block;
+                    height: 100%;
+                    text-align: center;
+                    width: 2rem;
+                    box-sizing: border-box;
+                }
+                &.root-sorting {
+                    float: right;
+                    top: 7px;
+                    position: relative;
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+
+    & > ul {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 1px;
+
+        & > li {
+            border-top: 1px solid #ddd;
+
+            &.info {
+                color: #31708f;
+                background-color: #d9edf7;
+            }
+
+            &.active {
+                color: #fff;
+                background-color: #337ab7;
+                border-color: #337ab7;
+            }
+        }
+    }
+}
+
+.box-modal {
+    position: relative;
+    width: 500px;
+    padding: 25px 16px;
+    background: #fff;
+    color: #000;
+    font-size: 1rem;
+    line-height: 18px;
+    box-shadow: 0 0 0 6px rgba(153, 153, 153, .3);
+    border-radius: 6px;
+
+    .form-control {
+        &.has-error {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #a94442;
+        }
+    }
+
+    #nodeSorting {
+        .element {
+            display: inline-block;
+            padding: 0.5rem;
+            margin: 0 0.5rem;
+            border: 1px dashed #ddd;
+            cursor: pointer;
+        }
+    }
+}
+.box-modal_close {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    font-size: 14px;
+    line-height: 15px;
+    color: #999;
+    cursor: pointer;
+}
+.box-modal_close:hover {
+    color: #6897bb;
+}
