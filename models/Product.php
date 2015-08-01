@@ -64,8 +64,8 @@ class Product extends \yii\db\ActiveRecord
                         'folder' => 'original',
                     ],
                     'small' => [
-                        'width' => 800,
-                        'height' => 600,
+                        'width' => 64,
+                        'height' => 64,
                         'folder' => 'small',
                     ],
                 ],
