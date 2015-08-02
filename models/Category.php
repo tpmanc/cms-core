@@ -25,6 +25,9 @@ class Category extends \yii\db\ActiveRecord
 {
     const IS_MAIN_CATEGORY = 1;
     const IS_ADDITIONAL_CATEGORY = 0;
+
+    const IS_DISABLED = 1;
+    const IS_ENABLED = 0;
     
     /**
      * @inheritdoc
