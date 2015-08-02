@@ -3,6 +3,7 @@
 namespace tpmanc\cmscore\models;
 
 use Yii;
+use tpmanc\cmscore\models\Product;
 
 /**
  * This is the model class for table "category".
@@ -108,5 +109,10 @@ class Category extends \yii\db\ActiveRecord
             }
         }
         return $result;
+    }
+
+    public function getProducts()
+    {
+        return $this->hasMany(Product::className(), ['id' => 'productId'])->viaTable('productCategories', ['categoryId' => 'id']);
     }
 }
