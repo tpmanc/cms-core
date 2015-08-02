@@ -9,7 +9,9 @@ use Yii;
  *
  * @property integer $id
  * @property integer $itemId
- * @property integer $fileId
+ * @property string $image
+ * @property string $path
+ * @property string $size
  */
 class ProductImage extends \yii\db\ActiveRecord
 {
@@ -27,8 +29,11 @@ class ProductImage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['itemId', 'fileId'], 'required'],
-            [['itemId', 'fileId'], 'integer']
+            [['itemId', 'image', 'path'], 'required'],
+            [['itemId'], 'integer'],
+            
+            ['size', 'default', 'value' => 'default'],
+            [['image', 'path', 'size'], 'string', 'max' => 255]
         ];
     }
 
@@ -40,7 +45,6 @@ class ProductImage extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('core/productImage', 'ID'),
             'itemId' => Yii::t('core/productImage', 'Item ID'),
-            'fileId' => Yii::t('core/productImage', 'File ID'),
         ];
     }
 }
