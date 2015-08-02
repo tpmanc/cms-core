@@ -29,10 +29,8 @@ class ProductImage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['itemId', 'image', 'path'], 'required'],
+            [['itemId', 'image', 'path', 'size'], 'required'],
             [['itemId'], 'integer'],
-            
-            ['size', 'default', 'value' => 'default'],
             [['image', 'path', 'size'], 'string', 'max' => 255]
         ];
     }
@@ -43,8 +41,11 @@ class ProductImage extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('core/productImage', 'ID'),
-            'itemId' => Yii::t('core/productImage', 'Item ID'),
+            'id' => 'ID',
+            'itemId' => 'Item ID',
+            'image' => 'Image',
+            'path' => 'Path',
+            'size' => 'Size',
         ];
     }
 }
