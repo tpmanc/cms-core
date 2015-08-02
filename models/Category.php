@@ -113,6 +113,7 @@ class Category extends \yii\db\ActiveRecord
 
     public function getProducts()
     {
-        return $this->hasMany(Product::className(), ['id' => 'productId'])->viaTable('productCategories', ['categoryId' => 'id']);
+        return $this->hasMany(Product::className(), ['id' => 'productId'])->where(['isDisabled' => Product::IS_ENABLED])
+            ->viaTable('productCategories', ['categoryId' => 'id']);
     }
 }

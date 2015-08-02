@@ -33,6 +33,9 @@ use tpmanc\filebehavior\FileBehavior;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    const IS_ENABLED = 0;
+    const IS_DISABLED = 1;
+
     public $mainCategory;
 
     public $additionalCategories = [];
