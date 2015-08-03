@@ -7,7 +7,7 @@ use yii\helpers\Html;
 use tpmanc\cmscore\models\Category;
 use tpmanc\cmscore\models\productCategories;
 use tpmanc\cmscore\models\ProductRests;
-use tpmanc\filebehavior\FileBehavior;
+use tpmanc\filebehavior\ImageBehavior;
 
 /**
  * This is the model class for table "product".
@@ -53,8 +53,8 @@ class Product extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            'FileBehavior' => [
-                'class' => FileBehavior::className(),
+            'ImageBehavior' => [
+                'class' => ImageBehavior::className(),
                 'fileModel' => 'tpmanc\cmscore\models\ProductImage',
                 'imageSizeModel' => 'tpmanc\cmscore\models\ImageSize',
                 'fileVar' => 'file',
