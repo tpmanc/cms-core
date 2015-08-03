@@ -164,7 +164,7 @@ class MenuController extends \yii\web\Controller
     private function getAllElements()
     {
         $menu = Menu::find()->orderBy(['tree' => SORT_ASC, 'lft' => SORT_ASC])->all();
-        $menuItems = '<option value="0">' . Yii::t('app/menu','Root Element') . '</option>';
+        $menuItems = '<option value="0">' . Yii::t('core/menu','Root Element') . '</option>';
         foreach ($menu as $elem) {
             $menuItems .= "<option value='{$elem->id}'>" . str_repeat('/..', $elem->depth) . "{$elem->name}</option>";
         }
@@ -176,6 +176,11 @@ class MenuController extends \yii\web\Controller
         $res = [];
         $item = Menu::findOne(['id' => $itemId]);
         $parent = $item->parents(1)->one();
+        if ($parent === null) {
+            $parentId = 0;
+        } else {
+            $parentId = $parent->id;
+        }
         $children = $item->children(1)->all();
         foreach ($children as $c) {
             $res[] = '<div class="element" data-id="'.$c->id.'">'.$c->name.'</div>';
@@ -183,7 +188,7 @@ class MenuController extends \yii\web\Controller
         return [
             'current' => [
                 'id' => $item->id,
-                'parentId' => $parent->id,
+                'parentId' => $parentId,
                 'name' => $item->name,
                 'link' => $item->link,
                 'isCategory' => $item->isCategory,
