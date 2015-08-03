@@ -56,12 +56,14 @@ class Category extends \yii\db\ActiveRecord
             [['seoText'], 'string'],
             [['productCount', 'position'], 'integer'],
             ['isDisabled', 'boolean'],
-            [['title', 'seoTitle', 'seoDescription', 'seoKeywords', 'chpu'], 'string', 'max' => 255],
+            [['title', 'seoTitle', 'seoKeywords', 'chpu'], 'string', 'max' => 255],
+            [['seoDescription'], 'string', 'max' => 500],
             ['chpu', 'match', 
                 'pattern' => '/^[A-Za-z0-9\-\_]+$/i', 
                 'message' => Yii::t('core/category', 'Chpu is invalid. Should contain only "0-9", "A-Z", "a-z", "-", "_"')
             ],
             [['isDisabled', 'productCount', 'position'], 'default', 'value' => 0],
+            [['seoTitle', 'seoDescription', 'seoKeywords', 'seoText'], 'default', 'value' => ''],
         ];
     }
 

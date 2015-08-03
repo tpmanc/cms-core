@@ -5,6 +5,7 @@ namespace tpmanc\cmscore\models;
 use Yii;
 use creocoder\nestedsets\NestedSetsBehavior;
 use tpmanc\cmscore\models\MenuQuery;
+use tpmanc\cmscore\models\Category;
 
 /**
  * This is the model class for table "menu".
@@ -69,5 +70,17 @@ class Menu extends \yii\db\ActiveRecord
     public static function find()
     {
         return new MenuQuery(get_called_class());
+    }
+
+    public function getInfo()
+    {
+        if ($this->isCategory === 1) {
+            return $this->hasOne(Category::className(), ['id' => 'categoryId'])->asArray();
+        } else {
+            return [
+                'title' => $this->name,
+                'chpu' => $this->link,
+            ];
+        }
     }
 }

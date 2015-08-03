@@ -87,17 +87,18 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'price', 'chpu', 'fakeInStock', 'isDisabled', 'mainCategory'], 'required'],
-            [['netCost', 'price', 'discount', 'fakeInStock', 'isDisabled', 'mainCategory'], 'integer'],
+            [['price', 'discount', 'fakeInStock', 'isDisabled', 'mainCategory'], 'integer'],
             ['mainCategory', 'compare', 'compareValue' => 0, 'operator' => '!=', 'message' => Yii::t('core/product', 'Select Main Category')],
             [['description', 'shortDescription'], 'string'],
-            [['length', 'width', 'height', 'weight'], 'number'],
+            [['length', 'width', 'height', 'weight', 'netCost'], 'number'],
             ['additionalCategories', 'each', 'rule' => ['integer']],
             ['chpu', 'unique'],
             ['chpu', 'match',
-                'pattern' => '/^[A-Za-z0-9\-\_]+$/i',
+                'pattern' => '/[A-Za-z0-9\-\_\(\)]+$/i',
                 'message' => Yii::t('core/product', 'Chpu is invalid. Should contain only "0-9", "A-Z", "a-z", "-", "_"')
             ],
-            [['title', 'nomenclature', 'seoTitle', 'seoDescription', 'seoKeywords', 'chpu'], 'string', 'max' => 255],
+            [['title', 'nomenclature', 'seoTitle', 'seoKeywords', 'chpu'], 'string', 'max' => 255],
+            [['seoDescription'], 'string', 'max' => 500],
             [
                 ['isDisabled', 'netCost', 'discount', 'length', 'width', 'height', 'weight', 'fakeInStock'],
                 'default',
@@ -204,5 +205,14 @@ class Product extends \yii\db\ActiveRecord
     public function getRests()
     {
         return $this->hasOne(ProductRests::className(), ['productId' => 'id']);
+    }
+
+    public function isAvailable()
+    {
+        if ($this->fakeInStock === 1 || $this->rests->amount > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
