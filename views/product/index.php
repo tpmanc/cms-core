@@ -29,6 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'width' => 70,
                 ],
             ],
+            [
+                'label' => 'Изображение',
+                'format' => 'image',
+                'value' => function($data) {
+                    $image = $data->getImages('small', 1);
+                    return Yii::getAlias('@webupload' . $image['path'] . $image['name']);
+                },
+            ],
             'title',
             // 'description:ntext',
             // 'shortDescription:ntext',
