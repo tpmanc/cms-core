@@ -3,15 +3,14 @@
 namespace tpmanc\cmscore\models;
 
 use Yii;
+use tpmanc\cmscore\models\ImageSize;
 
 /**
  * This is the model class for table "productImage".
  *
  * @property integer $id
  * @property integer $itemId
- * @property string $image
- * @property string $path
- * @property string $size
+ * @property string $name
  */
 class ProductImage extends \yii\db\ActiveRecord
 {
@@ -29,9 +28,9 @@ class ProductImage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['itemId', 'image', 'path', 'size'], 'required'],
+            [['itemId', 'name'], 'required'],
             [['itemId'], 'integer'],
-            [['image', 'path', 'size'], 'string', 'max' => 255]
+            [['name'], 'string', 'max' => 255]
         ];
     }
 
@@ -43,9 +42,12 @@ class ProductImage extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'itemId' => 'Item ID',
-            'image' => 'Image',
-            'path' => 'Path',
-            'size' => 'Size',
+            'name' => 'Name',
         ];
+    }
+
+    public function getImageSize()
+    {
+        return $this->hasMany(ImageSize::className(), ['imageId' => 'id']);
     }
 }

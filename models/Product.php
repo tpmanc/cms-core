@@ -55,7 +55,8 @@ class Product extends \yii\db\ActiveRecord
         return [
             'FileBehavior' => [
                 'class' => FileBehavior::className(),
-                'fileModel' => 'tpmanc\cmscore\models\productImage',
+                'fileModel' => 'tpmanc\cmscore\models\ProductImage',
+                'imageSizeModel' => 'tpmanc\cmscore\models\ImageSize',
                 'fileVar' => 'file',
                 'fileFolder' => '@upload/product',
                 'imageSizes' => [
@@ -63,6 +64,11 @@ class Product extends \yii\db\ActiveRecord
                         'width' => 800,
                         'height' => 600,
                         'folder' => 'original',
+                    ],
+                    'big' => [
+                        'width' => 400,
+                        'height' => 300,
+                        'folder' => 'big',
                     ],
                     'small' => [
                         'width' => 64,
