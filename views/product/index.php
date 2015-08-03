@@ -66,9 +66,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'label' => Yii::t('core/productRests', 'Product Rests'),
+                'format' => 'raw',
                 'value' => function ($data) {
-                    $amount = $data->rests->amount;
-                    return ($amount === null) ? 0 : $amount ;
+                    $amount = ($data->rests === null) ? 0 : $data->rests->amount;
+                    return $amount;
                 },
                 'options' => [
                     'width' => 70,
