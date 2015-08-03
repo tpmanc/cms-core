@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'isDisabled:boolean',
             [
                 'label' => Yii::t('core/productRests', 'Product Rests'),
-                'value' => ($model->rests->amount === null) ? 0 : $model->rests->amount,
+                'value' => ($model->rests === null) ? 0 : $model->rests->amount,
             ],
         ],
     ]) ?>
