@@ -25,6 +25,16 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <?php
+        $images = $model->getImages('big');
+        foreach ($images as $image) {
+            echo Html::img(Yii::getAlias('@webupload' . $image['path'] . $image['name']));
+        }
+    ?>
+
+    <br>
+    <br>
+
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
