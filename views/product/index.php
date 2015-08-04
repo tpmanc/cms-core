@@ -34,7 +34,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'image',
                 'value' => function($data) {
                     $image = $data->getImages('small', 1);
-                    return Yii::getAlias('@webupload' . $image['path'] . $image['name']);
+                    if (isset($image['path']) && isset($image['name'])) {
+                        return Yii::getAlias('@webupload' . $image['path'] . $image['name']);
+                    } else {
+                        return '';
+                    }
                 },
             ],
             'title',
