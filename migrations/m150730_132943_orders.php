@@ -9,7 +9,6 @@ class m150730_132943_orders extends Migration
     {
         $this->createTable('order', [
             'id' => Schema::TYPE_PK,
-            'orderProductsId' => Schema::TYPE_INTEGER . ' NOT NULL',
             'name' => Schema::TYPE_STRING . '(255) NOT NULL',
             'adress' => Schema::TYPE_STRING . '(255) NOT NULL',
             'phone' => Schema::TYPE_STRING . '(255) NOT NULL',
@@ -20,6 +19,8 @@ class m150730_132943_orders extends Migration
             'date' => Schema::TYPE_INTEGER . ' NOT NULL',
             'discount' => Schema::TYPE_INTEGER . ' NOT NULL',
             'totalPrice' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'deliveryPrice'=> Schema::TYPE_INTEGER . ' NOT NULL',
+            'status'=> Schema::TYPE_INTEGER . '(1) NOT NULL',
         ]);
         $this->createTable('orderProducts', [
             'id' => Schema::TYPE_PK,

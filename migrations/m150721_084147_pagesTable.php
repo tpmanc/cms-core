@@ -12,7 +12,7 @@ class m150721_084147_pagesTable extends Migration
             'title' => Schema::TYPE_STRING . '(255) NOT NULL',
             'text' => Schema::TYPE_TEXT . ' NOT NULL',
             'seoTitle' => Schema::TYPE_STRING . '(255) NOT NULL',
-            'seoDesctiption' => Schema::TYPE_STRING . '(255) NOT NULL',
+            'seoDescription' => Schema::TYPE_STRING . '(255) NOT NULL',
             'seoKeywords' => Schema::TYPE_STRING . '(255) NOT NULL',
             'chpu' => Schema::TYPE_STRING . '(255) NOT NULL',
         ]);

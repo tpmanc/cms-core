@@ -5,7 +5,7 @@ use yii\db\Migration;
 
 class m150730_100123_productImage extends Migration
 {
-    public function up()
+    public function safeUp()
     {
         $this->createTable('productImage', [
             'id' => Schema::TYPE_PK,
@@ -18,7 +18,7 @@ class m150730_100123_productImage extends Migration
         );
     }
 
-    public function down()
+    public function safeDown()
     {
         $this->dropForeignKey('FK_productImage_product', 'productImage');
         $this->dropTable('productImage');

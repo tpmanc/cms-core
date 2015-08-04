@@ -21,6 +21,7 @@ use common\models\Category;
 
     <?= $form->field($model, 'additionalCategories')->listBox(Category::generateSelectBox($model->mainCategory, false), [
         'multiple' => true,
+        'size' => 12,
     ]) ?>
 
     <?= $form->field($model, 'description')->widget(\yii\redactor\widgets\Redactor::className(), [
