@@ -83,4 +83,9 @@ class Menu extends \yii\db\ActiveRecord
             ];
         }
     }
+
+    public function getMenuRoot()
+    {
+        return Menu::findOne(['name' => 'Menu Root', 'depth' => 0]);
+    }
 }

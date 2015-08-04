@@ -13,7 +13,7 @@ class MenuController extends \yii\web\Controller
     public function actionIndex()
     {
         // $menu = Menu::find()->orderBy(['lft' => SORT_ASC])->all();
-        $menu = $this->getMenuRoot()->children()->all();
+        $menu = Menu::getMenuRoot()->children()->all();
         $categories = Category::find()->all();
 
         return $this->render('index', [
@@ -56,7 +56,7 @@ class MenuController extends \yii\web\Controller
                     ];
                 }
                 if ($parentId == 0) {
-                    $root = $this->getMenuRoot();
+                    $root = Menu::getMenuRoot();
                     $elem = new Menu($fields);
                     $elem->appendTo($root);
                 } else {
@@ -163,7 +163,7 @@ class MenuController extends \yii\web\Controller
 
     private function getAllElements()
     {
-        $root = $this->getMenuRoot();
+        $root = Menu::getMenuRoot();
         $menu = $root->children()->all();
         $menuItems = '<option value="' . $root->id . '">' . Yii::t('core/menu', $root->name) . '</option>';
         foreach ($menu as $elem) {
@@ -201,7 +201,7 @@ class MenuController extends \yii\web\Controller
 
     private function checkRoot()
     {
-        $root = $this->getMenuRoot();
+        $root = Menu::getMenuRoot();
         if ($root === null) {
             $fields = [
                 'name' => 'Menu Root',
@@ -212,10 +212,5 @@ class MenuController extends \yii\web\Controller
             $elem = new Menu($fields);
             $elem->makeRoot();
         }
-    }
-
-    private function getMenuRoot()
-    {
-        return Menu::findOne(['name' => 'Menu Root', 'depth' => 0]);
     }
 }
