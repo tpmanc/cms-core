@@ -12,7 +12,8 @@ class MenuController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $menu = Menu::find()->orderBy(['tree' => SORT_ASC, 'lft' => SORT_ASC])->all();
+        // $menu = Menu::find()->orderBy(['lft' => SORT_ASC])->all();
+        $menu = $this->getMenuRoot()->children()->all();
         $categories = Category::find()->all();
 
         return $this->render('index', [
@@ -23,6 +24,7 @@ class MenuController extends \yii\web\Controller
 
     public function actionSaveElement()
     {
+        $this->checkRoot();
         Yii::$app->response->format = Response::FORMAT_JSON;
         if (Yii::$app->request->isAjax) {
             if (empty(Yii::$app->request->post())) {
@@ -50,16 +52,13 @@ class MenuController extends \yii\web\Controller
                         'name' => $name,
                         'link' => $link,
                         'isCategory' => 0,
-                        'categoryId' => 0,
+                        'categoryId' => 0
                     ];
                 }
                 if ($parentId == 0) {
+                    $root = $this->getMenuRoot();
                     $elem = new Menu($fields);
-                    $elem->makeRoot();
-                    $html = $this->renderPartial('root-element', [
-                        'root' => $elem,
-                        'leaves' => [],
-                    ]);
+                    $elem->appendTo($root);
                 } else {
                     $parent = Menu::findOne(['id' => $parentId]);
                     $elem = new Menu($fields);
@@ -107,8 +106,8 @@ class MenuController extends \yii\web\Controller
             }
             $post = Yii::$app->request->post();
             $first = Menu::findOne(['id' => $post['sorting'][0]]);
-            $count = count($post['sorting']);
-            for ($i = 1; $i < $count; $i++) {
+            $count = count($post['sorting']) - 1;
+            for ($i = $count; $i >= 1; $i--) {
                 $sub = Menu::findOne(['id' => $post['sorting'][$i]]);
                 $sub->insertAfter($first);
             }
@@ -150,6 +149,7 @@ class MenuController extends \yii\web\Controller
 
     public function actionNewElement()
     {
+        $this->checkRoot();
         Yii::$app->response->format = Response::FORMAT_JSON;
         if (Yii::$app->request->isAjax) {
             $menuItems = $this->getAllElements();
@@ -163,8 +163,9 @@ class MenuController extends \yii\web\Controller
 
     private function getAllElements()
     {
-        $menu = Menu::find()->orderBy(['tree' => SORT_ASC, 'lft' => SORT_ASC])->all();
-        $menuItems = '<option value="0">' . Yii::t('core/menu','Root Element') . '</option>';
+        $root = $this->getMenuRoot();
+        $menu = $root->children()->all();
+        $menuItems = '<option value="' . $root->id . '">' . Yii::t('core/menu', $root->name) . '</option>';
         foreach ($menu as $elem) {
             $menuItems .= "<option value='{$elem->id}'>" . str_repeat('/..', $elem->depth) . "{$elem->name}</option>";
         }
@@ -196,5 +197,25 @@ class MenuController extends \yii\web\Controller
             ],
             'children' => $res,
         ];
+    }
+
+    private function checkRoot()
+    {
+        $root = $this->getMenuRoot();
+        if ($root === null) {
+            $fields = [
+                'name' => 'Menu Root',
+                'link' => '',
+                'isCategory' => 0,
+                'categoryId' => 0,
+            ];
+            $elem = new Menu($fields);
+            $elem->makeRoot();
+        }
+    }
+
+    private function getMenuRoot()
+    {
+        return $root = Menu::findOne(['name' => 'Menu Root', 'depth' => 0]);
     }
 }

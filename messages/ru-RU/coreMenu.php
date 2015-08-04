@@ -2,7 +2,7 @@
 return [
     // model
     'Menu Builder' => 'Конструктор меню',
-    'Root Element' => 'Корневой элемент',
+    'Menu Root' => 'Корневой элемент',
     'Select category' => 'Выберите категорию',
     'Item Title' => 'Название',
     'Link' => 'Ссылка',

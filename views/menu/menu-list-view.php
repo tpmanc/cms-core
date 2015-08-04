@@ -65,7 +65,7 @@ foreach($menu as $n=>$category) {
         $fixed = true;
     }
 
-    if ($category->depth == 0) {
+    if ($category->depth == 1) {
         echo '<li class="info root" data-id="' . $category->id . '">
                 <i class="material-icons expand">arrow_drop_down</i>
                 <i class="material-icons root-sorting">import_export</i>
