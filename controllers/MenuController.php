@@ -216,6 +216,6 @@ class MenuController extends \yii\web\Controller
 
     private function getMenuRoot()
     {
-        return $root = Menu::findOne(['name' => 'Menu Root', 'depth' => 0]);
+        return Menu::findOne(['name' => 'Menu Root', 'depth' => 0]);
     }
 }
