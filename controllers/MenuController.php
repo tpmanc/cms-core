@@ -12,7 +12,6 @@ class MenuController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $this->checkRoot();
         // $menu = Menu::find()->orderBy(['lft' => SORT_ASC])->all();
         $menu = Menu::getMenuRoot()->children()->all();
         $categories = Category::find()->all();

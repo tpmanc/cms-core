@@ -5,7 +5,7 @@ namespace tpmanc\cmscore\models;
 use Yii;
 use yii\helpers\Html;
 use tpmanc\cmscore\models\Category;
-use tpmanc\cmscore\models\productCategories;
+use tpmanc\cmscore\models\ProductCategories;
 use tpmanc\cmscore\models\ProductRests;
 use tpmanc\filebehavior\ImageBehavior;
 
@@ -144,17 +144,17 @@ class Product extends \yii\db\ActiveRecord
 
     public function getCategories()
     {
-        return $this->hasMany(productCategories::className(), ['productId' => 'id']);
+        return $this->hasMany(ProductCategories::className(), ['productId' => 'id']);
     }
 
     public function getAdditionalCategoriesModels()
     {
-        return $this->hasMany(productCategories::className(), ['productId' => 'id'])->where(['isMainCategory' => Category::IS_ADDITIONAL_CATEGORY]);
+        return $this->hasMany(ProductCategories::className(), ['productId' => 'id'])->where(['isMainCategory' => Category::IS_ADDITIONAL_CATEGORY]);
     }
 
     public function getMainCategoryModel()
     {
-        return $this->hasOne(productCategories::className(), ['productId' => 'id'])->where(['isMainCategory' => Category::IS_MAIN_CATEGORY]);
+        return $this->hasOne(ProductCategories::className(), ['productId' => 'id'])->where(['isMainCategory' => Category::IS_MAIN_CATEGORY]);
     }
 
     public function getAdditionalCategoriesString()
@@ -172,11 +172,11 @@ class Product extends \yii\db\ActiveRecord
      */
     public function afterSave($insert, $changedAttributes)
     {
-        productCategories::deleteAll(['productId' => $this->id]);
+        ProductCategories::deleteAll(['productId' => $this->id]);
         // save main category
         $mainCat = $this->mainCategory;
         if ($mainCat != 0) {
-            $mainCategory = new productCategories();
+            $mainCategory = new ProductCategories();
             $mainCategory->productId = $this->id;
             $mainCategory->categoryId = $mainCat;
             $mainCategory->isMainCategory = Category::IS_MAIN_CATEGORY;
@@ -187,7 +187,7 @@ class Product extends \yii\db\ActiveRecord
         if (is_array($addCats)) {
             foreach ($addCats as $categoryId) {
                 if ($categoryId != $mainCat) {
-                    $category = new productCategories();
+                    $category = new ProductCategories();
                     $category->productId = $this->id;
                     $category->categoryId = $categoryId;
                     $category->isMainCategory = Category::IS_ADDITIONAL_CATEGORY;
@@ -207,12 +207,18 @@ class Product extends \yii\db\ActiveRecord
         return $this->hasOne(ProductRests::className(), ['productId' => 'id']);
     }
 
+    /**
+     * Check products rests
+     * @return boolean Return true if product is available
+     */
     public function isAvailable()
     {
-        if ($this->fakeInStock === 1 || $this->rests->amount > 0) {
+        if ($this->fakeInStock === 1) {
             return true;
-        } else {
-            return false;
         }
+        if ($this->rests !== null && $this->rests->amount > 0) {
+            return true;
+        }
+        return false;
     }
 }
