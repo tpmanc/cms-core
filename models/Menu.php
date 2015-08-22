@@ -72,6 +72,15 @@ class Menu extends \yii\db\ActiveRecord
         return new MenuQuery(get_called_class());
     }
 
+    public function getCategory()
+    {
+        if ($this->isCategory === 1) {
+            return $this->hasOne(Category::className(), ['id' => 'categoryId']);
+        } else {
+            throw new Exception('This element has not category link');
+        }
+    }
+
     public function getInfo()
     {
         if ($this->isCategory === 1) {
@@ -81,6 +90,15 @@ class Menu extends \yii\db\ActiveRecord
                 'title' => $this->name,
                 'chpu' => $this->link,
             ];
+        }
+    }
+
+    public function getLink()
+    {
+        if ($this->isCategory === 1) {
+            return $this->category->chpu;
+        } else {
+            return $this->link;
         }
     }
 
