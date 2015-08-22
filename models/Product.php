@@ -59,6 +59,8 @@ class Product extends \yii\db\ActiveRecord
                 'imageSizeModel' => 'tpmanc\cmscore\models\ImageSize',
                 'imageVariable' => 'file',
                 'imageFolder' => '@upload/product',
+                'webImageFolder' => '@webupload/product',
+                'noImagePath' => '@webupload/no-image.png',
                 'imageSizes' => [
                     'original' => [
                         'width' => 800,

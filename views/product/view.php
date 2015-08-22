@@ -26,9 +26,9 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php
-        $images = $model->getImages('big');
+        $images = $model->getImages(false, 'big');
         foreach ($images as $image) {
-            echo Html::img(Yii::getAlias('@webupload' . $image['path'] . $image['name']));
+            echo Html::img($image);
         }
     ?>
 
