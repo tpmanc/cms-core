@@ -14,6 +14,9 @@ use Yii;
  */
 class PaymentType extends \yii\db\ActiveRecord
 {
+    const IS_DISABLED = 1;
+    const IS_ENABLED = 0;
+    
     /**
      * @inheritdoc
      */
