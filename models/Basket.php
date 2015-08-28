@@ -23,8 +23,10 @@ class Basket
         $count = 0;
         $price = 0;
         foreach ($basket as $elem) {
-            $count += $elem['amount'];
-            $price += $elem['amount'] * $elem['price'];
+            if (isset($elem['amount']) && isset($elem['price'])) {
+                $count += $elem['amount'];
+                $price += $elem['amount'] * $elem['price'];
+            }
         }
 
         return [
