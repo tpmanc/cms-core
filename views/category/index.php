@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a(Yii::t('core/category', 'Create Category'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('core/category', 'Download CSV'), ['get-csv'], ['class' => 'btn btn-warning']) ?>
     </p>
     
     <?= GridView::widget([

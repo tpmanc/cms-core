@@ -3,7 +3,9 @@
 namespace tpmanc\cmscore\controllers;
 
 use Yii;
+use yii\filters\AccessControl;
 use tpmanc\cmscore\models\Category;
+use tpmanc\cmscore\models\Menu;
 use tpmanc\cmscore\models\search\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -17,6 +19,16 @@ class CategoryController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'except' => ['login', 'error'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['manager'],
+                    ]
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -24,6 +36,49 @@ class CategoryController extends Controller
                 ],
             ],
         ];
+    }
+
+    /**
+     * Download CSV file with categories
+     * @return Csv file
+     */
+    public function actionGetCsv()
+    {
+        $categories = Category::find()->all();
+        $filePath = Yii::getAlias('@backend/web/upload/categories.csv');
+        $str = '';
+        $fields = [
+            'Id',
+            'Title',
+            'Seo Title',
+            'Seo Description',
+            'Level',
+        ];
+        $str .= implode(';', $fields) . ';';
+        foreach ($categories as $category) {
+            $menuItem = Menu::find()->where(['categoryId' => $category->id])->one();
+            if ($menuItem === null) {
+                $depth = '';
+            } else {
+                if ($menuItem->depth === 2) {
+                    $depth = 'category';
+                } elseif ($menuItem->depth === 3) {
+                    $depth = 'tag';
+                }
+            }
+
+            $fields = [
+                $category->id,
+                $category->title,
+                $category->seoTitle,
+                $category->seoDescription,
+                $depth,
+            ];
+            $str .= implode(';', $fields) . ';';
+        }
+        file_put_contents($filePath, $str);
+        Yii::$app->response->sendFile($filePath);
+        // return $this->redirect(['index']);
     }
 
     /**
