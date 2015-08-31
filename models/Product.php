@@ -63,18 +63,21 @@ class Product extends \yii\db\ActiveRecord
                 'noImagePath' => '@webupload/no-image.png',
                 'imageSizes' => [
                     'original' => [
-                        'width' => 800,
-                        'height' => 600,
                         'folder' => 'original',
                     ],
                     'big' => [
-                        'width' => 400,
-                        'height' => 300,
+                        'width' => Yii::$app->params['productBig']['width'],
+                        'height' => Yii::$app->params['productBig']['height'],
                         'folder' => 'big',
                     ],
+                    'medium' => [
+                        'width' => Yii::$app->params['productMedium']['width'],
+                        'height' => Yii::$app->params['productMedium']['height'],
+                        'folder' => 'medium',
+                    ],
                     'small' => [
-                        'width' => 64,
-                        'height' => 64,
+                        'width' => Yii::$app->params['productSmall']['width'],
+                        'height' => Yii::$app->params['productSmall']['height'],
                         'folder' => 'small',
                     ],
                 ],
