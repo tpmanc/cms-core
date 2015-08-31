@@ -54,7 +54,7 @@ class CategoryController extends Controller
             'Seo Description',
             'Level',
         ];
-        $str .= implode(';', $fields) . ';';
+        $str .= implode(';', $fields) . ";\n";
         foreach ($categories as $category) {
             $menuItem = Menu::find()->where(['categoryId' => $category->id])->one();
             if ($menuItem === null) {
@@ -74,11 +74,10 @@ class CategoryController extends Controller
                 $category->seoDescription,
                 $depth,
             ];
-            $str .= implode(';', $fields) . ';';
+            $str .= implode(';', $fields) . ";\n";
         }
         file_put_contents($filePath, $str);
         Yii::$app->response->sendFile($filePath);
-        // return $this->redirect(['index']);
     }
 
     /**
