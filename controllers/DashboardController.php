@@ -53,8 +53,13 @@ class DashboardController extends Controller
     public function actionIndex()
     {
         $dashboardInfo = UserDashboard::find()->where(['userId' => Yii::$app->user->identity->id])->one();
+        if ($dashboardInfo === null) {
+            $dashboard = [];
+        } else {
+            $dashboard = unserialize($dashboardInfo->items);
+        }
         return $this->render('index', [
-            'dashboardInfo' => unserialize($dashboardInfo->items),
+            'dashboardInfo' => $dashboard,
         ]);
     }
 
