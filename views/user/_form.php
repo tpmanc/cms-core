@@ -17,28 +17,28 @@ use yii\widgets\ActiveForm;
         <label class="control-label" for="user-username"><?= Yii::t('core/user', 'Username') ?></label>
         <input type="text" id="user-username" class="form-control" name="User[username]" value="<?= $model->username ?>">
 
-        <div class="help-block"><?= $errors['username'][0] ?></div>
+        <div class="help-block"><?= isset($errors['username'][0]) ? $errors['username'][0] : '' ?></div>
     </div>
 
     <div class="form-group field-user-email <?= isset($errors['email'][0]) ? 'has-error' : '' ?>">
         <label class="control-label" for="user-email"><?= Yii::t('core/user', 'Email') ?></label>
         <input type="email" id="user-email" class="form-control" name="User[email]" value="<?= $model->email ?>">
 
-        <div class="help-block"><?= $errors['email'][0] ?></div>
+        <div class="help-block"><?= isset($errors['email'][0]) ? $errors['email'][0] : '' ?></div>
     </div>
 
     <div class="form-group field-user-password <?= isset($errors['password'][0]) ? 'has-error' : '' ?>">
         <label class="control-label" for="user-password"><?= Yii::t('core/user', 'New Password') ?></label>
         <input type="password" id="user-password" class="form-control" name="User[password]" value="<?= $model->password ?>">
 
-        <div class="help-block"><?= $errors['password'][0] ?></div>
+        <div class="help-block"><?= isset($errors['password'][0]) ? $errors['password'][0] : '' ?></div>
     </div>
 
     <div class="form-group field-user-role <?= isset($errors['role'][0]) ? 'has-error' : '' ?>">
         <label class="control-label" for="user-role"><?= Yii::t('core/user', 'Role') ?></label>
         <?= Html::dropDownList('User[role]', $userRole, $roles, ['class' => 'form-control', 'id' => 'user-role']) ?>
 
-        <div class="help-block"><?= $errors['role'][0] ?></div>
+        <div class="help-block"><?= isset($errors['role'][0]) ? $errors['role'][0] : '' ?></div>
     </div>
 
     <div class="form-group">
