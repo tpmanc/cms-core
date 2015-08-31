@@ -47,6 +47,11 @@ class ProductCategories extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getProduct()
+    {
+        return $this->hasOne(Product::className(), ['id' => 'productId']);
+    }
+
     public function getInfo()
     {
         return $this->hasOne(Category::className(), ['id' => 'categoryId']);
