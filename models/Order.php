@@ -22,6 +22,7 @@ use tpmanc\cmscore\models\OrderProducts;
  * @property integer $totalPrice
  * @property integer $deliveryPrice
  * @property integer $status
+ * @property integer $isFastBuy
  *
  * @property OrderProducts[] $orderProducts
  */
@@ -48,10 +49,11 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'phone', 'deliveryType', 'paymentType'], 'required'],
+            [['name', 'phone', 'deliveryType', 'paymentType', 'isFastBuy'], 'required'],
             [['status', 'deliveryType', 'paymentType', 'date', 'discount', 'totalPrice', 'deliveryPrice'], 'integer'],
             [['name', 'adress', 'phone', 'email', 'extraInformation'], 'string', 'max' => 255],
             ['email', 'email'],
+            ['isFastBuy', 'boolean', 'trueValue' => true, 'falseValue' => false, 'strict' => false]
 
             [['discount', 'status', 'totalPrice', 'deliveryPrice'], 'default', 'value' => 0],
             ['date', 'default', 'value' => time()],
@@ -77,6 +79,7 @@ class Order extends \yii\db\ActiveRecord
             'totalPrice' => Yii::t('core/order', 'Total Price'),
             'deliveryPrice' => Yii::t('core/order', 'Delivery Price'),
             'status' => Yii::t('core/order', 'Status'),
+            'isFastBuy' => Yii::t('core/order', 'Is Fast Buy'),
         ];
     }
 

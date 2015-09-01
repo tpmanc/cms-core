@@ -13,6 +13,7 @@ return [
     'Total Price' => 'Итоговая сумма',
     'Delivery Price' => 'Стоимость доставки',
     'Status' => 'Статус',
+    'Is Fast Buy' => 'Быстрый заказ',
     'New' => 'Новый',
     'New Orders' => 'Новые',
     'Accepted' => 'Принят',
