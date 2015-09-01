@@ -6,9 +6,26 @@ class Basket
 {
     private static $cookieName = 'basket';
 
-    public static function all()
+    private static $fastBuyCookieName = 'basket';
+
+    /**
+     * Order basket
+     * @return array Order basket array
+     */
+    public static function order()
     {
         $basket = isset($_COOKIE[self::$cookieName]) ? $_COOKIE[self::$cookieName] : '{}' ;
+        $basket = json_decode($basket, true);
+        return $basket;
+    }
+
+    /**
+     * Fast order basket
+     * @return array Fast order basket array
+     */
+    public static function fast()
+    {
+        $basket = isset($_COOKIE[self::$fastBuyCookieName]) ? $_COOKIE[self::$fastBuyCookieName] : '{}' ;
         $basket = json_decode($basket, true);
         return $basket;
     }
