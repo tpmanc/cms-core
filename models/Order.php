@@ -53,7 +53,7 @@ class Order extends \yii\db\ActiveRecord
             [['status', 'deliveryType', 'paymentType', 'date', 'discount', 'totalPrice', 'deliveryPrice'], 'integer'],
             [['name', 'adress', 'phone', 'email', 'extraInformation'], 'string', 'max' => 255],
             ['email', 'email'],
-            ['isFastBuy', 'boolean', 'trueValue' => true, 'falseValue' => false, 'strict' => false]
+            ['isFastBuy', 'boolean', 'trueValue' => true, 'falseValue' => false, 'strict' => false],
 
             [['discount', 'status', 'totalPrice', 'deliveryPrice'], 'default', 'value' => 0],
             ['date', 'default', 'value' => time()],
