@@ -36,7 +36,7 @@ class Basket
      */
     public static function info()
     {
-        $basket = self::all();
+        $basket = self::order();
         $count = 0;
         $price = 0;
         foreach ($basket as $elem) {
