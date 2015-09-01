@@ -6,7 +6,7 @@ class Basket
 {
     private static $cookieName = 'basket';
 
-    private static $fastBuyCookieName = 'basket';
+    private static $fastBuyCookieName = 'fast-order';
 
     /**
      * Order basket
