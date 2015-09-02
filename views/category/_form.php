@@ -17,6 +17,8 @@ use common\models\Category;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'image')->fileInput() ?>
+
     <?= $form->field($model, 'seoTitle')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'seoDescription')->textInput(['maxlength' => true]) ?>
@@ -39,7 +41,10 @@ use common\models\Category;
     <?= $form->field($model, 'isDisabled')->checkbox() ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('core', 'Create') : Yii::t('core', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton(
+            $model->isNewRecord ? Yii::t('core', 'Create') : Yii::t('core', 'Update'),
+            ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
+        ) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

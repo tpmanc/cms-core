@@ -6,6 +6,7 @@ return [
 	'Product Count' => 'Количество товаров',
 	'Position' => 'Позиция',
 	'Is Disabled' => 'Выключить',
+	'Image' => 'Изображение',
 
 	'Category' => 'Категория',
 	'Categories' => 'Категории',

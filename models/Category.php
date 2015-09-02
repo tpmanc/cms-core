@@ -4,6 +4,7 @@ namespace tpmanc\cmscore\models;
 
 use Yii;
 use tpmanc\cmscore\models\Product;
+use tpmanc\filebehavior\ImageBehavior;
 
 /**
  * This is the model class for table "category".
@@ -24,6 +25,11 @@ use tpmanc\cmscore\models\Product;
  */
 class Category extends \yii\db\ActiveRecord
 {
+    /**
+     * @var object Category image
+     */
+    public $image;
+
     const IS_MAIN_CATEGORY = 1;
     const IS_ADDITIONAL_CATEGORY = 0;
 
@@ -41,8 +47,38 @@ class Category extends \yii\db\ActiveRecord
     public function scenarios()
     {
         return [
-            'create' => ['title', 'seoTitle', 'seoDescription', 'seoKeywords', 'seoText', 'chpu', 'isDisabled'],
-            'update' => ['title', 'seoTitle', 'seoDescription', 'seoKeywords', 'seoText', 'chpu', 'isDisabled'],
+            'create' => ['title', 'seoTitle', 'seoDescription', 'seoKeywords', 'seoText', 'chpu', 'isDisabled', 'image'],
+            'update' => ['title', 'seoTitle', 'seoDescription', 'seoKeywords', 'seoText', 'chpu', 'isDisabled', 'image'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'ImageBehavior' => [
+                'class' => ImageBehavior::className(),
+                'imageModel' => 'tpmanc\cmscore\models\CategoryImage',
+                'imageSizeModel' => 'tpmanc\cmscore\models\CategoryImageSize',
+                'imageVariable' => 'image',
+                'imageFolder' => '@upload/category',
+                'webImageFolder' => '@webupload',
+                'noImagePath' => '@webupload/no-image.png',
+                'imageSizes' => [
+                    'medium' => [
+                        'width' => Yii::$app->params['categoryMedium']['width'],
+                        'height' => Yii::$app->params['categoryMedium']['height'],
+                        'folder' => 'medium',
+                    ],
+                    'small' => [
+                        'width' => Yii::$app->params['categorySmall']['width'],
+                        'height' => Yii::$app->params['categorySmall']['height'],
+                        'folder' => 'small',
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -64,6 +100,7 @@ class Category extends \yii\db\ActiveRecord
             ],
             [['isDisabled', 'productCount', 'position'], 'default', 'value' => 0],
             [['seoTitle', 'seoDescription', 'seoKeywords', 'seoText'], 'default', 'value' => ''],
+            ['image', 'file', 'extensions' => ['png', 'jpg'], 'maxSize' => 1024*1024*1024],
         ];
     }
 
@@ -83,6 +120,7 @@ class Category extends \yii\db\ActiveRecord
             'productCount' => Yii::t('core/category', 'Product Count'),
             'position' => Yii::t('core/category', 'Position'),
             'isDisabled' => Yii::t('core/category', 'Is Disabled'),
+            'image' => Yii::t('core/category', 'Image'),
         ];
     }
 
