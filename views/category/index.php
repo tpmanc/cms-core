@@ -31,6 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     'width' => 10,
                 ],
             ],
+            [
+                'attribute' => 'image',
+                'format' => 'html',
+                'value' => function($data) {
+                    return Html::img(Yii::$app->params['frontendUrl'] . $data->getImage('small'), ['width'=>'50']);
+                },
+            ],
             'title',
             // 'text:raw',
             'seoTitle',

@@ -30,6 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             // 'id',
+            [
+                'attribute' => 'image',
+                'format' => 'html',
+                'value' => Html::img(Yii::$app->params['frontendUrl'] . $model->getImage('medium')),
+            ],
             'title',
             'seoTitle',
             'seoDescription',
