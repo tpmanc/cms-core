@@ -29,6 +29,7 @@ use common\models\Category;
                                 'class' => 'category-image',
                                 'data' => [
                                     'id' => $id,
+                                    'category-id' => $model->id,
                                 ],
                             ]) ?>
                             <i class="material-icons delete-icon">delete</i>
