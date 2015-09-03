@@ -16,14 +16,28 @@ use common\models\Category;
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-    
+
     <?php 
-    if (!$model->isNewRecord) {
-        $images = $model->getImages('medium');
-        foreach ($images as $id => $path) {
-            echo Html::img(Yii::$app->params['frontendUrl'] . $path);
-        }
-    } ?>
+    if (!$model->isNewRecord) { ?>
+        <div id="categoryImages">
+            <?php 
+                $images = $model->getImages('medium');
+                foreach ($images as $id => $path) {
+                    if ($id !== 0) { ?>
+                        <div class="category-image-holder">
+                            <?= Html::img(Yii::$app->params['frontendUrl'] . $path, [
+                                'class' => 'category-image',
+                                'data' => [
+                                    'id' => $id,
+                                ],
+                            ]) ?>
+                            <i class="material-icons delete-icon">delete</i>
+                        </div>
+            <?php   }
+                }
+            ?>
+        </div>
+    <?php } ?>
 
     <?= $form->field($model, 'image')->fileInput() ?>
 
