@@ -63,19 +63,19 @@ class Category extends \yii\db\ActiveRecord
                 'imageModel' => 'tpmanc\cmscore\models\CategoryImage',
                 'imageSizeModel' => 'tpmanc\cmscore\models\CategoryImageSize',
                 'imageVariable' => 'image',
-                'imageFolder' => '@upload/category',
+                'imageFolder' => '@upload',
                 'webImageFolder' => '@webupload',
                 'noImagePath' => '@webupload/no-image.png',
                 'imageSizes' => [
                     'medium' => [
                         'width' => Yii::$app->params['categoryMedium']['width'],
                         'height' => Yii::$app->params['categoryMedium']['height'],
-                        'folder' => 'medium',
+                        'folder' => 'category/medium',
                     ],
                     'small' => [
                         'width' => Yii::$app->params['categorySmall']['width'],
                         'height' => Yii::$app->params['categorySmall']['height'],
-                        'folder' => 'small',
+                        'folder' => 'category/small',
                     ],
                 ],
             ],

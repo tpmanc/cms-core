@@ -61,28 +61,28 @@ class Product extends \yii\db\ActiveRecord
                 'imageModel' => 'tpmanc\cmscore\models\ProductImage',
                 'imageSizeModel' => 'tpmanc\cmscore\models\ImageSize',
                 'imageVariable' => 'file',
-                'imageFolder' => '@upload/product',
+                'imageFolder' => '@upload',
                 'webImageFolder' => '@webupload',
                 'noImagePath' => '@webupload/no-image.png',
                 'multiple' => true,
                 'imageSizes' => [
                     'original' => [
-                        'folder' => 'original',
+                        'folder' => 'product/original',
                     ],
                     'big' => [
                         'width' => Yii::$app->params['productBig']['width'],
                         'height' => Yii::$app->params['productBig']['height'],
-                        'folder' => 'big',
+                        'folder' => 'product/big',
                     ],
                     'medium' => [
                         'width' => Yii::$app->params['productMedium']['width'],
                         'height' => Yii::$app->params['productMedium']['height'],
-                        'folder' => 'medium',
+                        'folder' => 'product/medium',
                     ],
                     'small' => [
                         'width' => Yii::$app->params['productSmall']['width'],
                         'height' => Yii::$app->params['productSmall']['height'],
-                        'folder' => 'small',
+                        'folder' => 'product/small',
                     ],
                 ],
             ],
