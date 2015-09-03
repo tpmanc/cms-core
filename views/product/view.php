@@ -26,9 +26,9 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php
-        $images = $model->getImages(false, 'big');
+        $images = $model->getImages('small');
         foreach ($images as $image) {
-            echo Html::img($image);
+            echo Html::img(Yii::$app->params['frontendUrl'] . $image);
         }
     ?>
 

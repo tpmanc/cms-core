@@ -8,6 +8,7 @@ use tpmanc\cmscore\models\Category;
 use tpmanc\cmscore\models\search\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
 
 /**
@@ -94,7 +95,7 @@ class ProductController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('create', [
+            return $this->render('update', [
                 'model' => $model,
             ]);
         }
@@ -111,6 +112,29 @@ class ProductController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Delete product image by id
+     */
+    public function actionDeleteImage()
+    {
+        $post = Yii::$app->request->post();
+        $imageId = $post['imageId'];
+        $productId = $post['productId'];
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        if (Yii::$app->request->isAjax) {
+            $product = Product::find()->where(['id' => $productId])->one();
+            if ($product === null) {
+                throw new NotFoundHttpException("Product not found");
+            }
+            $product->deleteImage($imageId);
+            return [
+                'status' => 'ok',
+            ];
+        } else {
+            throw new ForbiddenHttpException("Forbidden");
+        }
     }
 
     /**

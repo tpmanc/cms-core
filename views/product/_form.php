@@ -15,6 +15,29 @@ use common\models\Category;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?php 
+    if (!$model->isNewRecord) { ?>
+        <div id="productImages">
+            <?php 
+                $images = $model->getImages('small');
+                foreach ($images as $id => $path) {
+                    if ($id !== 0) { ?>
+                        <div class="product-image-holder">
+                            <?= Html::img(Yii::$app->params['frontendUrl'] . $path, [
+                                'class' => 'product-image',
+                                'data' => [
+                                    'id' => $id,
+                                    'product-id' => $model->id,
+                                ],
+                            ]) ?>
+                            <i class="material-icons delete-icon">delete</i>
+                        </div>
+            <?php   }
+                }
+            ?>
+        </div>
+    <?php } ?>
+
     <?= $form->field($model, 'file')->fileInput() ?>
 
     <?= $form->field($model, 'mainCategory')->dropDownList(Category::generateSelectBox()) ?>
@@ -77,7 +100,10 @@ use common\models\Category;
     <?= $form->field($model, 'weight')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('core', 'Create') : Yii::t('core', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton(
+            $model->isNewRecord ? Yii::t('core', 'Create') : Yii::t('core', 'Update'),
+            ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']
+        ) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
