@@ -7,8 +7,10 @@ use yii\filters\AccessControl;
 use tpmanc\cmscore\models\Category;
 use tpmanc\cmscore\models\Menu;
 use tpmanc\cmscore\models\search\CategorySearch;
+use tpmanc\cmscore\models\search\CategoryImage;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
 
 /**
@@ -157,6 +159,29 @@ class CategoryController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Delete category image by id
+     */
+    public function actionDeleteImage()
+    {
+        $post = Yii::$app->request->post();
+        $imageId = $post['imageId'];
+        $categoryId = $post['categoryId'];
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        if (Yii::$app->request->isAjax) {
+            $category = Category::find()->where(['id' => $categoryId])->one();
+            if ($category === null) {
+                throw new NotFoundHttpException("Category not found");
+            }
+            $category->deleteImage($imageId);
+            return [
+                'status' => 'ok',
+            ];
+        } else {
+            throw new ForbiddenHttpException("Forbidden");
+        }
     }
 
     /**
