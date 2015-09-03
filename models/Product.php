@@ -64,6 +64,7 @@ class Product extends \yii\db\ActiveRecord
                 'imageFolder' => '@upload/product',
                 'webImageFolder' => '@webupload',
                 'noImagePath' => '@webupload/no-image.png',
+                'multiple' => true,
                 'imageSizes' => [
                     'original' => [
                         'folder' => 'original',
