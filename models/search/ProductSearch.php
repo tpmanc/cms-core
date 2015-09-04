@@ -18,7 +18,7 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'netCost', 'price', 'discount', 'fakeInStock', 'isDisabled'], 'integer'],
+            [['id', 'netCost', 'price', 'discountPrice', 'fakeInStock', 'isDisabled'], 'integer'],
             [['title', 'description', 'shortDescription', 'nomenclature', 'seoTitle', 'seoDescription', 'seoKeywords', 'chpu'], 'safe'],
             [['length', 'width', 'height', 'weight'], 'number'],
         ];
@@ -60,7 +60,7 @@ class ProductSearch extends Product
             'id' => $this->id,
             'netCost' => $this->netCost,
             'price' => $this->price,
-            'discount' => $this->discount,
+            'discountPrice' => $this->discountPrice,
             'length' => $this->length,
             'width' => $this->width,
             'height' => $this->height,
