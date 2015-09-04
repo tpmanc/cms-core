@@ -9,7 +9,7 @@ class m150904_122318_supplierTable extends Migration
     {
         $this->createTable('supplier', [
             'id' => Schema::TYPE_PK,
-            'title' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'title' => Schema::TYPE_STRING . '(255) NOT NULL',
         ]);
 
         $this->createTable('productSupplier', [
