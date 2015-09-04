@@ -10,7 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $title
  *
- * @property ProductSupplier[] $productSuppliers
+ * @property ProductSupplier $productSuppliers
  */
 class Supplier extends \yii\db\ActiveRecord
 {

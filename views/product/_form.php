@@ -2,10 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use common\models\Category;
+use tpmanc\cmscore\models\Category;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Product */
+/* @var $model tpmanc\cmscore\models\Product */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

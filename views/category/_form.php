@@ -4,10 +4,10 @@ use Yii\t;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
-use common\models\Category;
+use tpmanc\cmscore\models\Category;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Category */
+/* @var $model tpmanc\cmscore\models\Category */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
