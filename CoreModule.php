@@ -18,7 +18,7 @@ class CoreModule extends \yii\base\Module
 
     private function registerTranslations()
     {
-        Yii::$app->i18n->translations['core/*'] = [
+        Yii::$app->i18n->translations['core*'] = [
             'class' => 'yii\i18n\PhpMessageSource',
             'sourceLanguage' => 'en-US',
             'basePath' => '@vendor/tpmanc/cms-core/messages',
