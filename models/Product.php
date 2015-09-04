@@ -210,6 +210,13 @@ class Product extends \yii\db\ActiveRecord
         parent::afterSave($insert, $changedAttributes);
     }
 
+    public function getVideoCode()
+    {
+        if ($this->video !== '') {
+            return preg_match('|\/embed\/([a-zA-Z0-9\_\-]+)"|is', $this->video, $match)[1];
+        }
+    }
+
     /**
      * Rests relation
      */
