@@ -17,6 +17,7 @@ return [
     'Chpu' => 'ЧПУ',
     'Fake In Stock' => 'Всегда в наличии',
     'Is Disabled' => 'Выключить',
+    'Video' => 'Видео',
 
     'Products' => 'Товары',
     'Create Product' => 'Добавить товар',

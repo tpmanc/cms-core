@@ -89,6 +89,9 @@ use common\models\Category;
 
     <?= $form->field($model, 'isDisabled')->checkbox() ?>
 
+    <h3>Видео</h3>
+    <?= $form->field($model, 'video')->textInput(['maxlength' => true]) ?>
+
     <h3>Габариты</h3>
 
     <?= $form->field($model, 'length')->textInput() ?>

@@ -30,6 +30,7 @@ use tpmanc\filebehavior\ImageBehavior;
  * @property string $chpu
  * @property integer $fakeInStock
  * @property integer $isDisabled
+ * @property integer $video
  */
 class Product extends \yii\db\ActiveRecord
 {
@@ -106,7 +107,7 @@ class Product extends \yii\db\ActiveRecord
                 'pattern' => '/[A-Za-z0-9\-\_\(\)]+$/i',
                 'message' => Yii::t('core/product', 'Chpu is invalid. Should contain only "0-9", "A-Z", "a-z", "-", "_"')
             ],
-            [['title', 'nomenclature', 'seoTitle', 'seoKeywords', 'chpu'], 'string', 'max' => 255],
+            [['title', 'nomenclature', 'seoTitle', 'seoKeywords', 'chpu', 'video'], 'string', 'max' => 255],
             [['seoDescription'], 'string', 'max' => 500],
             [
                 ['isDisabled', 'netCost', 'discountPrice', 'length', 'width', 'height', 'weight', 'fakeInStock'],
@@ -114,7 +115,7 @@ class Product extends \yii\db\ActiveRecord
                 'value' => 0,
             ],
             [
-                ['description', 'shortDescription', 'nomenclature', 'seoTitle', 'seoDescription', 'seoKeywords'],
+                ['description', 'shortDescription', 'nomenclature', 'seoTitle', 'seoDescription', 'seoKeywords', 'video'],
                 'default',
                 'value' => '',
             ],
@@ -148,6 +149,7 @@ class Product extends \yii\db\ActiveRecord
             'chpu' => Yii::t('core/product', 'Chpu'),
             'fakeInStock' => Yii::t('core/product', 'Fake In Stock'),
             'isDisabled' => Yii::t('core/product', 'Is Disabled'),
+            'video' => Yii::t('core/product', 'Video'),
         ];
     }
 

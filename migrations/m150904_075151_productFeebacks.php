@@ -25,6 +25,7 @@ class m150904_075151_productFeebacks extends Migration
 
         $this->dropColumn('product', 'discount');
         $this->addColumn('product', 'discountPrice', Schema::TYPE_INTEGER . ' NOT NULL');
+        $this->addColumn('product', 'video', Schema::TYPE_STRING . '(255) NOT NULL');
 
     }
 
@@ -34,6 +35,7 @@ class m150904_075151_productFeebacks extends Migration
         $this->dropTable('productFeedback');
 
         $this->dropColumn('product', 'discountPrice');
+        $this->dropColumn('product', 'video');
         $this->addColumn('product', 'discount', Schema::TYPE_INTEGER . ' NOT NULL');
     }
     
