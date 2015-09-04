@@ -8,9 +8,9 @@ use Yii;
  * This is the model class for table "supplier".
  *
  * @property integer $id
- * @property integer $title
+ * @property string $title
  *
- * @property ProductSupplier $productSuppliers
+ * @property ProductSupplier $productSupplier
  */
 class Supplier extends \yii\db\ActiveRecord
 {
@@ -28,8 +28,8 @@ class Supplier extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['title'], 'required'],
             [['title'], 'string', 'max' => 255],
-            [['title'], 'integer']
         ];
     }
 
