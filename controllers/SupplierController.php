@@ -4,7 +4,7 @@ namespace tpmanc\cmscore\controllers;
 
 use Yii;
 use tpmanc\cmscore\models\Supplier;
-use tpmanc\cmscore\models\SupplierSearch;
+use tpmanc\cmscore\models\search\SupplierSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
