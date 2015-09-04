@@ -3,7 +3,7 @@ return [
     // model
     'Title' => 'Название',
 
-    'Users' => 'Пользователи',
-    'Create User' => 'Добавить пользователя',
-    'Update User' => 'Изменить пользователя',
+    'Suppliers' => 'Поставщики',
+    'Create Supplier' => 'Добавить поставщика',
+    'Update Supplier' => 'Изменить поставщика',
 ];

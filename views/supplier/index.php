@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\SupplierSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Suppliers');
+$this->title = Yii::t('core/supplier', 'Suppliers');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="supplier-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Supplier'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('core/supplier', 'Create Supplier'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
