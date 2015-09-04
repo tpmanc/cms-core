@@ -18,7 +18,7 @@ use tpmanc\filebehavior\ImageBehavior;
  * @property string $shortDescription
  * @property integer $netCost
  * @property integer $price
- * @property integer $discount
+ * @property integer $discountPrice
  * @property string $nomenclature
  * @property double $length
  * @property double $width
@@ -96,7 +96,7 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'price', 'chpu', 'fakeInStock', 'isDisabled', 'mainCategory'], 'required'],
-            [['price', 'discount', 'fakeInStock', 'isDisabled', 'mainCategory'], 'integer'],
+            [['price', 'discountPrice', 'fakeInStock', 'isDisabled', 'mainCategory'], 'integer'],
             ['mainCategory', 'compare', 'compareValue' => 0, 'operator' => '!=', 'message' => Yii::t('core/product', 'Select Main Category')],
             [['description', 'shortDescription'], 'string'],
             [['length', 'width', 'height', 'weight', 'netCost'], 'number'],
@@ -109,7 +109,7 @@ class Product extends \yii\db\ActiveRecord
             [['title', 'nomenclature', 'seoTitle', 'seoKeywords', 'chpu'], 'string', 'max' => 255],
             [['seoDescription'], 'string', 'max' => 500],
             [
-                ['isDisabled', 'netCost', 'discount', 'length', 'width', 'height', 'weight', 'fakeInStock'],
+                ['isDisabled', 'netCost', 'discountPrice', 'length', 'width', 'height', 'weight', 'fakeInStock'],
                 'default',
                 'value' => 0,
             ],
@@ -136,7 +136,7 @@ class Product extends \yii\db\ActiveRecord
             'shortDescription' => Yii::t('core/product', 'Short Description'),
             'netCost' => Yii::t('core/product', 'Net Cost'),
             'price' => Yii::t('core/product', 'Price'),
-            'discount' => Yii::t('core/product', 'Discount'),
+            'discountPrice' => Yii::t('core/product', 'Discount Price'),
             'nomenclature' => Yii::t('core/product', 'Nomenclature'),
             'length' => Yii::t('core/product', 'Length'),
             'width' => Yii::t('core/product', 'Width'),
@@ -214,6 +214,24 @@ class Product extends \yii\db\ActiveRecord
     public function getRests()
     {
         return $this->hasOne(ProductRests::className(), ['productId' => 'id']);
+    }
+
+    /**
+     * Get product price
+     * @return integer Product price with discount
+     */
+    public function getPrice()
+    {
+        return ($this->discountPrice !== 0) ? $this->discountPrice : $this->price;
+    }
+
+    /**
+     * Check is product discount exist
+     * @return boolean True if discount exist
+     */
+    public function isDiscounted()
+    {
+        return ($this->discountPrice !== 0) ? true : false;
     }
 
     /**

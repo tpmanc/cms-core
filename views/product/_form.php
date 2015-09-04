@@ -73,7 +73,7 @@ use common\models\Category;
 
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <?= $form->field($model, 'discount')->textInput() ?>
+    <?= $form->field($model, 'discountPrice')->textInput() ?>
 
     <?= $form->field($model, 'nomenclature')->textInput(['maxlength' => true]) ?>
 

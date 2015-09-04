@@ -8,7 +8,7 @@ return [
     'Short Description' => 'Короткое описание',
     'Net Cost' => 'Себестоимость',
     'Price' => 'Цена',
-    'Discount' => 'Скидка',
+    'Discount Price' => 'Цена со скидкой',
     'Nomenclature' => 'Номенклатура',
     'Length' => 'Длина',
     'Width' => 'Ширина',

@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'price') ?>
 
-    <?php // echo $form->field($model, 'discount') ?>
+    <?php // echo $form->field($model, 'discountPrice') ?>
 
     <?php // echo $form->field($model, 'nomenclature') ?>
 

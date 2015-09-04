@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'shortDescription:raw',
             'netCost',
             'price',
-            'discount',
+            'discountPrice',
             'nomenclature',
             'length',
             'width',
