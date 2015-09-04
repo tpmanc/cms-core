@@ -213,8 +213,9 @@ class Product extends \yii\db\ActiveRecord
     public function getVideoCode()
     {
         if ($this->video !== '') {
-            preg_match('|\/embed\/([a-zA-Z0-9\_\-]+)"|is', $this->video, $match);
-            return $match[1];
+            if (preg_match('|\/embed\/([a-zA-Z0-9\_\-]+)|is', $this->video, $match)) {
+                return $match[1];
+            }
         }
     }
 
