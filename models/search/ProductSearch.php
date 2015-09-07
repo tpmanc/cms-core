@@ -18,7 +18,7 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'netCost', 'price', 'discountPrice', 'fakeInStock', 'isDisabled'], 'integer'],
+            [['id', 'netCost', 'price', 'discountPrice', 'fakeInStock', 'isDisabled', 'isNew', 'isBest'], 'integer'],
             [['title', 'description', 'shortDescription', 'nomenclature', 'seoTitle', 'seoDescription', 'seoKeywords', 'chpu'], 'safe'],
             [['length', 'width', 'height', 'weight'], 'number'],
         ];
@@ -67,6 +67,8 @@ class ProductSearch extends Product
             'weight' => $this->weight,
             'fakeInStock' => $this->fakeInStock,
             'isDisabled' => $this->isDisabled,
+            'isNew' => $this->isNew,
+            'isBest' => $this->isBest,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

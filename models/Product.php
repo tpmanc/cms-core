@@ -31,6 +31,8 @@ use tpmanc\filebehavior\ImageBehavior;
  * @property integer $fakeInStock
  * @property integer $isDisabled
  * @property integer $video
+ * @property integer $isNew
+ * @property integer $isBest
  */
 class Product extends \yii\db\ActiveRecord
 {
@@ -97,7 +99,7 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'price', 'chpu', 'fakeInStock', 'isDisabled', 'mainCategory'], 'required'],
-            [['price', 'discountPrice', 'fakeInStock', 'isDisabled', 'mainCategory'], 'integer'],
+            [['price', 'discountPrice', 'fakeInStock', 'isDisabled', 'mainCategory', 'isNew', 'isBest'], 'integer'],
             ['mainCategory', 'compare', 'compareValue' => 0, 'operator' => '!=', 'message' => Yii::t('core/product', 'Select Main Category')],
             [['description', 'shortDescription'], 'string'],
             [['length', 'width', 'height', 'weight', 'netCost'], 'number'],
@@ -110,7 +112,7 @@ class Product extends \yii\db\ActiveRecord
             [['title', 'nomenclature', 'seoTitle', 'seoKeywords', 'chpu', 'video'], 'string', 'max' => 255],
             [['seoDescription'], 'string', 'max' => 500],
             [
-                ['isDisabled', 'netCost', 'discountPrice', 'length', 'width', 'height', 'weight', 'fakeInStock'],
+                ['isDisabled', 'netCost', 'discountPrice', 'length', 'width', 'height', 'weight', 'fakeInStock', 'isNew', 'isBest'],
                 'default',
                 'value' => 0,
             ],
@@ -150,6 +152,8 @@ class Product extends \yii\db\ActiveRecord
             'fakeInStock' => Yii::t('core/product', 'Fake In Stock'),
             'isDisabled' => Yii::t('core/product', 'Is Disabled'),
             'video' => Yii::t('core/product', 'Video'),
+            'isNew' => Yii::t('core/product', 'Is New'),
+            'isBest' => Yii::t('core/product', 'Is Best'),
         ];
     }
 

@@ -18,6 +18,8 @@ return [
     'Fake In Stock' => 'Всегда в наличии',
     'Is Disabled' => 'Выключить',
     'Video' => 'Видео',
+    'Is New' => 'Новинка',
+    'Is Best' => 'Хит продаж',
 
     'Products' => 'Товары',
     'Create Product' => 'Добавить товар',
