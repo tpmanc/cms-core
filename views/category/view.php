@@ -42,8 +42,10 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'seoText:ntext',
             'chpu',
             'productCount',
-            // 'position',
             'isDisabled:boolean',
+            'isBrand:boolean',
+            'isVisibleInMenu:boolean',
+            'isVisibleInBreadcrumbs:boolean',
         ],
     ]) ?>
 

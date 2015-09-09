@@ -20,8 +20,10 @@ use tpmanc\filebehavior\ImageBehavior;
  * @property integer $level
  * @property string $idPath
  * @property integer $productCount
- * @property integer $position
  * @property integer $isDisabled
+ * @property integer $isBrand
+ * @property integer $isVisibleInBreadcrumbs
+ * @property integer $isVisibleInMenu
  */
 class Category extends \yii\db\ActiveRecord
 {
@@ -35,7 +37,16 @@ class Category extends \yii\db\ActiveRecord
 
     const IS_DISABLED = 1;
     const IS_ENABLED = 0;
-    
+
+    const IS_BRAND = 1;
+    const IS_NOT_BRAND = 0;
+
+    const IS_VISIBLE_IN_MENU = 1;
+    const IS_INVISIBLE_IN_MENU = 0;
+
+    const IS_VISIBLE_IN_BREADCRUMBS = 1;
+    const IS_INVISIBLE_IN_BREADCRUMBS = 0;
+
     /**
      * @inheritdoc
      */
@@ -47,8 +58,10 @@ class Category extends \yii\db\ActiveRecord
     public function scenarios()
     {
         return [
-            'create' => ['title', 'seoTitle', 'seoDescription', 'seoKeywords', 'seoText', 'chpu', 'isDisabled', 'image'],
-            'update' => ['title', 'seoTitle', 'seoDescription', 'seoKeywords', 'seoText', 'chpu', 'isDisabled', 'image'],
+            'create' => ['title', 'seoTitle', 'seoDescription', 'seoKeywords', 
+                         'seoText', 'chpu', 'isDisabled', 'isBrand', 'isVisibleInBreadcrumbs', 'isVisibleInMenu', 'image'],
+            'update' => ['title', 'seoTitle', 'seoDescription', 'seoKeywords',
+                         'seoText', 'chpu', 'isDisabled', 'isBrand', 'isVisibleInBreadcrumbs', 'isVisibleInMenu', 'image'],
         ];
     }
 
@@ -88,17 +101,17 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'chpu', 'productCount', 'position', 'isDisabled'], 'required'],
+            [['title', 'chpu', 'productCount', 'isDisabled', 'isBrand'], 'required'],
             [['seoText'], 'string'],
-            [['productCount', 'position'], 'integer'],
-            ['isDisabled', 'boolean'],
+            [['productCount'], 'integer'],
+            [['isDisabled', 'isBrand', 'isVisibleInBreadcrumbs', 'isVisibleInMenu'], 'boolean'],
             [['title', 'seoTitle', 'seoKeywords', 'chpu'], 'string', 'max' => 255],
             [['seoDescription'], 'string', 'max' => 500],
             ['chpu', 'match', 
                 'pattern' => '/^[A-Za-z0-9\-\_]+$/i', 
                 'message' => Yii::t('core/category', 'Chpu is invalid. Should contain only "0-9", "A-Z", "a-z", "-", "_"')
             ],
-            [['isDisabled', 'productCount', 'position'], 'default', 'value' => 0],
+            [['isDisabled', 'productCount', 'isBrand', 'isVisibleInMenu', 'isVisibleInBreadcrumbs'], 'default', 'value' => 0],
             [['seoTitle', 'seoDescription', 'seoKeywords', 'seoText'], 'default', 'value' => ''],
             ['image', 'file', 'extensions' => ['png', 'jpg'], 'maxSize' => 1024*1024*1024],
         ];
@@ -118,8 +131,10 @@ class Category extends \yii\db\ActiveRecord
             'seoText' => 'Seo Text',
             'chpu' => Yii::t('core/category', 'Chpu'),
             'productCount' => Yii::t('core/category', 'Product Count'),
-            'position' => Yii::t('core/category', 'Position'),
             'isDisabled' => Yii::t('core/category', 'Is Disabled'),
+            'isBrand' => Yii::t('core/category', 'Is Brand'),
+            'isVisibleInBreadcrumbs' => Yii::t('core/category', 'Is Visible In Breadcrumbs'),
+            'isVisibleInMenu' => Yii::t('core/category', 'Is Visible In Menu'),
             'image' => Yii::t('core/category', 'Image'),
         ];
     }
@@ -128,7 +143,6 @@ class Category extends \yii\db\ActiveRecord
     {
         if ($this->isNewRecord) {
             $this->productCount = 0;
-            $this->position = 0;
         }
      
         return parent::beforeSave($insert);

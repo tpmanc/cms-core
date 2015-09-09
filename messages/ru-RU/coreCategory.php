@@ -6,6 +6,9 @@ return [
 	'Product Count' => 'Количество товаров',
 	'Position' => 'Позиция',
 	'Is Disabled' => 'Выключить',
+	'Is Brand' => 'Бренд',
+	'Is Visible In Breadcrumbs' => 'Выводить в хлебных крошках',
+	'Is Visible In Menu' => 'Выводить в меню',
 	'Image' => 'Изображение',
 
 	'Category' => 'Категория',

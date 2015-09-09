@@ -61,6 +61,12 @@ use tpmanc\cmscore\models\Category;
 
     <?= $form->field($model, 'chpu')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'isBrand')->checkbox() ?>
+
+    <?= $form->field($model, 'isVisibleInMenu')->checkbox() ?>
+
+    <?= $form->field($model, 'isVisibleInBreadcrumbs')->checkbox() ?>
+
     <?= $form->field($model, 'isDisabled')->checkbox() ?>
 
     <div class="form-group">

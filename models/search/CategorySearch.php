@@ -18,7 +18,7 @@ class CategorySearch extends Category
     public function rules()
     {
         return [
-            [['id', 'productCount', 'position', 'isDisabled'], 'integer'],
+            [['id', 'productCount', 'isDisabled', 'isBrand', 'isVisibleInBreadcrumbs', 'isVisibleInMenu'], 'integer'],
             [['title', 'seoTitle', 'seoDescription', 'seoKeywords', 'seoText', 'chpu'], 'safe'],
         ];
     }
@@ -58,8 +58,10 @@ class CategorySearch extends Category
         $query->andFilterWhere([
             'id' => $this->id,
             'productCount' => $this->productCount,
-            'position' => $this->position,
             'isDisabled' => $this->isDisabled,
+            'isBrand' => $this->isBrand,
+            'isVisibleInMenu' => $this->isVisibleInMenu,
+            'isVisibleInBreadcrumbs' => $this->isVisibleInBreadcrumbs,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
