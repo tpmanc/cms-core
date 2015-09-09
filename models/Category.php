@@ -173,7 +173,7 @@ class Category extends \yii\db\ActiveRecord
      * @param integer|boolean $page All pages if page = false
      * @return yii\db\ActiveQuery
      */
-    public function getProducts($sorting, $page = false)
+    public function getProducts($sorting = false, $page = false)
     {
         if ($sorting === 'price-asc') {
             $sorting = 'price ASC';
