@@ -165,9 +165,24 @@ class Category extends \yii\db\ActiveRecord
         return $result;
     }
 
-    public function getProducts()
+    /**
+     * Get product from current category
+     * @param string|boolean $sorting Sorting type
+     * @param integer|boolean $page All pages if page = false
+     * @return yii\db\ActiveQuery
+     */
+    public function getProducts($sorting, $page = false)
     {
+        if ($sorting === 'price-asc') {
+            $sorting = 'price ASC';
+        } elseif ($sorting === 'price-desc') {
+            $sorting = 'price DESC';
+        } else {
+            $sorting = false;
+        }
+
         return $this->hasMany(Product::className(), ['id' => 'productId'])->where(['isDisabled' => Product::IS_ENABLED])
+            ->orderBy($sorting)
             ->viaTable('productCategories', ['categoryId' => 'id']);
     }
 }

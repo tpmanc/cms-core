@@ -73,7 +73,15 @@ class MenuController extends \yii\web\Controller
                 $elem->isCategory = $isCategory;
                 $elem->categoryId = $categoryId;
                 $elem->save();
-                // sorting
+                // replacing
+                if ($parentId == 0) {
+                    $root = Menu::getMenuRoot();
+                    $elem->appendTo($root);
+                } else {
+                    $parent = Menu::findOne(['id' => $parentId]);
+                    $elem->appendTo($parent);
+                }
+                // sorting sub elements
                 $first = Menu::findOne(['id' => $post['sorting'][0]]);
                 $first->prependTo($elem);
                 $count = count($post['sorting']);
