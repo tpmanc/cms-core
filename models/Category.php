@@ -47,6 +47,8 @@ class Category extends \yii\db\ActiveRecord
     const IS_VISIBLE_IN_BREADCRUMBS = 1;
     const IS_INVISIBLE_IN_BREADCRUMBS = 0;
 
+    const PRODUCTS_ON_PAGE = 20;
+
     /**
      * @inheritdoc
      */
@@ -181,8 +183,18 @@ class Category extends \yii\db\ActiveRecord
             $sorting = false;
         }
 
+        if ($page !== false) {
+            $limit = self::PRODUCTS_ON_PAGE;
+            $offset = ($page - 1) * $limit;
+        } else {
+            $limit = false;
+            $offset = false;
+        }
+
         return $this->hasMany(Product::className(), ['id' => 'productId'])->where(['isDisabled' => Product::IS_ENABLED])
             ->orderBy($sorting)
+            ->limit($limit)
+            ->offset($offset)
             ->viaTable('productCategories', ['categoryId' => 'id']);
     }
 }
