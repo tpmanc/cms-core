@@ -4,6 +4,7 @@ namespace tpmanc\cmscore\models;
 
 use Yii;
 use creocoder\nestedsets\NestedSetsBehavior;
+use arogachev\tree\behaviors\NestedSetsManagementBehavior;
 use tpmanc\cmscore\models\MenuQuery;
 use tpmanc\cmscore\models\Category;
 
@@ -30,15 +31,17 @@ class Menu extends \yii\db\ActiveRecord
         return 'menu';
     }
 
+    public function rules()
+    {
+        return [
+            ['name', 'default', 'value' => 'Новый узел'],
+        ];
+    }
+
     public function behaviors() {
         return [
-            'tree' => [
-                'class' => NestedSetsBehavior::className(),
-                // 'treeAttribute' => 'tree',
-                // 'leftAttribute' => 'lft',
-                // 'rightAttribute' => 'rgt',
-                // 'depthAttribute' => 'depth',
-            ],
+            NestedSetsBehavior::className(),
+            NestedSetsManagementBehavior::className(),
         ];
     }
 
