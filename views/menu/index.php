@@ -1,5 +1,5 @@
 <?php
-use arogachev\tree\widgets\NestedSets;
+use tpmanc\tree\widgets\NestedSets;
 use tpmanc\cmscore\models\Menu;
 
 /* @var $this yii\web\View */

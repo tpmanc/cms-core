@@ -4,7 +4,7 @@ namespace tpmanc\cmscore\models;
 
 use Yii;
 use creocoder\nestedsets\NestedSetsBehavior;
-use arogachev\tree\behaviors\NestedSetsManagementBehavior;
+use tpmanc\tree\behaviors\NestedSetsManagementBehavior;
 use tpmanc\cmscore\models\MenuQuery;
 use tpmanc\cmscore\models\Category;
 
