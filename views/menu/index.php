@@ -51,6 +51,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?= NestedSets::widget([
     'modelClass' => Menu::className(),
+    'jsTreeOptions' => [
+        'clientOptions' => [
+            'plugins' => ["wholerow", "checkbox"],
+        ]
+    ],
 ]) ?>
 
 <div style="display: none;">

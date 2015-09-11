@@ -63,26 +63,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     ['class' => 'form-control']
                 ),
             ],
-            [
-                'attribute' => 'isVisibleInMenu',
-                'format' => 'boolean',
-                'filter' => Html::activeDropDownList(
-                    $searchModel,
-                    'isVisibleInMenu',
-                    ['' => '-', 0 => Yii::t('core', 'No'), 1 => Yii::t('core', 'Yes')],
-                    ['class' => 'form-control']
-                ),
-            ],
-            [
-                'attribute' => 'isVisibleInBreadcrumbs',
-                'format' => 'boolean',
-                'filter' => Html::activeDropDownList(
-                    $searchModel,
-                    'isVisibleInBreadcrumbs',
-                    ['' => '-', 0 => Yii::t('core', 'No'), 1 => Yii::t('core', 'Yes')],
-                    ['class' => 'form-control']
-                ),
-            ],
 
             [
                 'class' => 'yii\grid\ActionColumn',

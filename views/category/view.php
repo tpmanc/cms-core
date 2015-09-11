@@ -44,8 +44,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'productCount',
             'isDisabled:boolean',
             'isBrand:boolean',
-            'isVisibleInMenu:boolean',
-            'isVisibleInBreadcrumbs:boolean',
         ],
     ]) ?>
 

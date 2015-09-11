@@ -61,9 +61,9 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'create' => ['title', 'seoTitle', 'seoDescription', 'seoKeywords', 
-                         'seoText', 'chpu', 'isDisabled', 'isBrand', 'isVisibleInBreadcrumbs', 'isVisibleInMenu', 'image'],
+                         'seoText', 'chpu', 'isDisabled', 'isBrand', 'image'],
             'update' => ['title', 'seoTitle', 'seoDescription', 'seoKeywords',
-                         'seoText', 'chpu', 'isDisabled', 'isBrand', 'isVisibleInBreadcrumbs', 'isVisibleInMenu', 'image'],
+                         'seoText', 'chpu', 'isDisabled', 'isBrand', 'image'],
         ];
     }
 
@@ -106,14 +106,14 @@ class Category extends \yii\db\ActiveRecord
             [['title', 'chpu', 'productCount', 'isDisabled', 'isBrand'], 'required'],
             [['seoText'], 'string'],
             [['productCount'], 'integer'],
-            [['isDisabled', 'isBrand', 'isVisibleInBreadcrumbs', 'isVisibleInMenu'], 'boolean'],
+            [['isDisabled', 'isBrand'], 'boolean'],
             [['title', 'seoTitle', 'seoKeywords', 'chpu'], 'string', 'max' => 255],
             [['seoDescription'], 'string', 'max' => 500],
             ['chpu', 'match', 
                 'pattern' => '/^[A-Za-z0-9\-\_]+$/i', 
                 'message' => Yii::t('core/category', 'Chpu is invalid. Should contain only "0-9", "A-Z", "a-z", "-", "_"')
             ],
-            [['isDisabled', 'productCount', 'isBrand', 'isVisibleInMenu', 'isVisibleInBreadcrumbs'], 'default', 'value' => 0],
+            [['isDisabled', 'productCount', 'isBrand'], 'default', 'value' => 0],
             [['seoTitle', 'seoDescription', 'seoKeywords', 'seoText'], 'default', 'value' => ''],
             ['image', 'file', 'extensions' => ['png', 'jpg'], 'maxSize' => 1024*1024*1024],
         ];
@@ -135,8 +135,6 @@ class Category extends \yii\db\ActiveRecord
             'productCount' => Yii::t('core/category', 'Product Count'),
             'isDisabled' => Yii::t('core/category', 'Is Disabled'),
             'isBrand' => Yii::t('core/category', 'Is Brand'),
-            'isVisibleInBreadcrumbs' => Yii::t('core/category', 'Is Visible In Breadcrumbs'),
-            'isVisibleInMenu' => Yii::t('core/category', 'Is Visible In Menu'),
             'image' => Yii::t('core/category', 'Image'),
         ];
     }
