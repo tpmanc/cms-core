@@ -10,6 +10,7 @@ use tpmanc\cmscore\models\Product;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -20,6 +21,16 @@ class OrderController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'except' => ['login', 'error'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['manager'],
+                    ]
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

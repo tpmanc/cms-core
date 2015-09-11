@@ -8,6 +8,7 @@ use tpmanc\cmscore\models\search\DeliveryTypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * DeliveryTypeController implements the CRUD actions for DeliveryType model.
@@ -17,6 +18,16 @@ class DeliveryTypeController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'except' => ['login', 'error'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['manager'],
+                    ]
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

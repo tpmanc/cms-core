@@ -35,7 +35,6 @@ class Menu extends \yii\db\ActiveRecord
     {
         return [
             ['name', 'default', 'value' => 'Новый узел'],
-            ['isDisabledInBreadcrumbs', 'boolean', 'strick' => false],
         ];
     }
 
